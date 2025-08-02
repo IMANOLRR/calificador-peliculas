@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               <button class="btn btn-sm btn-success me-2" onclick="editarPelicula(${index})">Guardar</button>
               <a href="ver.html" class="btn btn-sm btn-secondary">Cancelar</a>
+              <button class="btn btn-sm btn-danger" onclick="eliminarPelicula(${index})">Eliminar</button>
+
             </form>
           </div>
         </div>
@@ -59,3 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   mostrarPeliculas();
 });
+
+window.eliminarPelicula = (index) => {
+  if (!confirm("¿Estás seguro de que deseas eliminar esta película?")) return;
+
+  peliculas.splice(index, 1);
+  localStorage.setItem("peliculas", JSON.stringify(peliculas));
+  mostrarPeliculas();
+};
